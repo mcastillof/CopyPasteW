@@ -24,12 +24,13 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define VERSION             "CopyPasteW V0.01"
+#define VERSION             "CopyPasteW V0.02"
 #define LEFT_CLICK          GetKeyState(VK_LBUTTON) < 0
 #define MIDDLE_CLICK        GetKeyState(VK_MBUTTON) < 0
 
 
-long timediff(clock_t t1, clock_t t2) {
+long timediff(clock_t t1, clock_t t2)
+{
     long elapsed;
     elapsed = ((double)t2 - t1) / CLOCKS_PER_SEC * 1000;
     return elapsed;
@@ -70,14 +71,12 @@ void copy()
 {
     INPUT ip1, ip2;
 
-
     ip1.type = INPUT_KEYBOARD;
     ip1.ki.wScan = 0;
     ip1.ki.time = 0;
     ip1.ki.dwExtraInfo = 0;
 
     ip2 = ip1;
-
 
     ip1.ki.wVk = 0x11;
     ip1.ki.dwFlags = 0;
@@ -126,10 +125,11 @@ void message()
 {
     MessageBoxA(NULL,"Copy and paste functions using mouse like in X11, but for Microsoft Windows.\n\n"
                      "To disable CopyPasteW, go to taskmanager and kill CopyPasteW.exe\n\n"
-                     "Copyright Matias Castillo Felmer 2016. License GPL v3, get the code and the latest"
-                     "version in https://github.com/mcastillof/CopyPasteW", VERSION
-                     ,MB_OK);
+                     "Copyright Matias Castillo Felmer 2016. License GPL v3, get the code and the latest "
+                     "version in https://github.com/mcastillof/CopyPasteW"
+                     , VERSION, MB_OK);
 }
+
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
